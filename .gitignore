@@ -1,0 +1,11 @@
+# Environment Variables
+*.env
+
+# Node.js
+node_modules/
+
+# Cache
+/.wwebjs_cache
+
+# IDE
+/.idea
