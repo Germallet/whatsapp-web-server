@@ -11,7 +11,7 @@ export default class WhatsAppController {
                 apiKey: z.string(),
                 number: z.string(),
                 text: z.string()
-            }).strict().parse(request.query);
+            }).strict().parse(request.body);
         } catch (e) {
             response.status(400).send('Fail');
             return;

@@ -23,6 +23,7 @@ export default class WhatsApp {
         if (!numberDetails)
             return false;
         await this.client.sendMessage(numberDetails._serialized, text);
+        console.info(`[${number}] ${text}`);
         return true;
     }
 }
