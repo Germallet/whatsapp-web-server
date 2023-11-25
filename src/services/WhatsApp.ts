@@ -19,11 +19,16 @@ export default class WhatsApp {
     }
 
     public async sendMessageToNumber(number: string, text: string): Promise<boolean> {
-        const numberDetails = await this.client.getNumberId(number);
-        if (!numberDetails)
+        try {
+            const numberDetails = await this.client.getNumberId(number);
+            if (!numberDetails)
+                return false;
+            await this.client.sendMessage(numberDetails._serialized, text);
+            console.info(`[${number}] ${text}`);
+            return true;
+        } catch (e) {
+            console.error(e);
             return false;
-        await this.client.sendMessage(numberDetails._serialized, text);
-        console.info(`[${number}] ${text}`);
-        return true;
+        }
     }
 }
